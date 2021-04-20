@@ -1,39 +1,42 @@
-#include <iostream>
-#include <boost/asio.hpp>
-
-using namespace std;
-using namespace boost;
-
-#include "./helper.cpp"
+#include "headers.hpp"
 
 int main()
 {
-    string user;
-    char ans;
+    user me;
+    user frnd;
     cout << "What is Your Username : ";
-    cin >> user;
-    cout << user + " , Do You want to connect to your friend : (y/n) ";
+    cin >> me.name;
+    cout << me.getname() + " , Do You want to connect to your friend : (y/n) ";
+    char ans;
     cin >> ans;
+    bool connected = false;
     if (ans == 'y' || ans == 'Y')
     {
+        connected = true;
         cout << "Give Your Friend Address : ";
-        string address;
-        cin >> address;
-        connecttofriend(address);
+        cin >> frnd.address;
+        asio::ip::tcp::socket mysock = connecttofriend(frnd.getaddress());
         //   iconnectchat();
         return 0;
     }
-    cout << user + " , Do you Want a Friend to Connect : (y/n) ";
-    cin >> ans;
-    if (ans == 'y' || ans == 'Y')
+    else
     {
-        string address = getyouraddress();
-        cout << " Okey , Your address to connecct is : (y/n) ";
-        // letfriendconnect();
-        //  friendconnectchat();
-        return 0;
+        connected = true;
+        cout << me.getname() + " , Do you Want a Friend to Connect : (y/n) ";
+        cin >> ans;
+        if (ans == 'y' || ans == 'Y')
+        {
+            return ec.value();
+
+            cout << "Can't Be Idle , So Exiting ... ";
+            return 0;
+        }
     }
 
-    cout << "Can't Be Idle , So Exiting ... ";
+    if (connected)
+    {
+    }
+    else
+        cout << "\nExiting Without Any Connection\n";
     return 0;
 }
