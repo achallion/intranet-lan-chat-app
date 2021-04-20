@@ -10,31 +10,34 @@ int main()
     char ans;
     cin >> ans;
     bool connected = false;
+    asio::ip::tcp::socket *mysock;
     if (ans == 'y' || ans == 'Y')
     {
         connected = true;
         cout << "Give Your Friend Address : ";
         cin >> frnd.address;
-        asio::ip::tcp::socket mysock = connecttofriend(frnd.getaddress());
-        //   iconnectchat();
+        connector connect(frnd.getaddress(), 6767);
+        mysock = connect.getsock();
         return 0;
     }
-    else
+
+    cout << me.getname() + " , Do you Want a Friend to Connect : (y/n) ";
+    cin >> ans;
+    if (ans == 'y' || ans == 'Y')
     {
         connected = true;
-        cout << me.getname() + " , Do you Want a Friend to Connect : (y/n) ";
-        cin >> ans;
-        if (ans == 'y' || ans == 'Y')
-        {
-            return ec.value();
+        acceptor accept(6767);
+        accept.getadd();
 
-            cout << "Can't Be Idle , So Exiting ... ";
-            return 0;
-        }
+        /*  cout << "\nConnect To Me Through Id : " << accept.getaddress();
+        mysock = accept();*/
     }
 
     if (connected)
     {
+        // chat here
+
+        delete mysock;
     }
     else
         cout << "\nExiting Without Any Connection\n";

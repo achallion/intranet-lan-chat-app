@@ -13,8 +13,8 @@ public:
     string address;
 
     user();
-    user(const string &);
-    user(const string &, const string &);
+    user(const string );
+    user(const string , const string );
     ~user();
     user(const user &);
     user operator=(const user &);

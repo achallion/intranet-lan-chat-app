@@ -9,12 +9,12 @@ user::user()
     address = "";
 }
 
-user::user(const string &name) : name(name)
+user::user(const string name) : name(name)
 {
     address = "";
 }
 
-user::user(const string &name, const string &address) : name(name), address(address)
+user::user(const string name, const string address) : name(name), address(address)
 {
 }
 
