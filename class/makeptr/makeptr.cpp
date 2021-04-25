@@ -12,7 +12,8 @@ makeptr<T>::makeptr()
 template <class T>
 makeptr<T>::~makeptr()
 {
-    delete ptr;
+    if (ptr != NULL)
+        delete ptr;
 }
 
 #endif

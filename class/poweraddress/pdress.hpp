@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int ADD_KEY = 173;
+const int ADD_KEY = 137;
 
 class poweradd
 {

@@ -2,7 +2,7 @@
 
 string getyouraddress()
 {
-    cout << "Let me decide where to connect ? (y/n) : ";
+    cout << "Let me decide which interface to connect ? (y/n) : ";
     char x;
     cin >> x;
     string add;
@@ -28,7 +28,7 @@ string getyouraddress()
         fin.close();
         std::system("rm chat_vat_temp.txt");
     }
-    
+
     poweradd myadd;
     myadd.setraw(add);
     return myadd.getpadd();
