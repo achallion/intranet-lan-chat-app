@@ -5,7 +5,6 @@
 
 namespace nspac
 {
-    asio::io_service ioservice;
     system::error_code ec;
 
 #define errormayhappen                                                    \
@@ -60,7 +59,7 @@ string acceptor::getaddress()
     return rawadd;
 }
 
-asio::ip::tcp::socket *acceptor::accept()
+asio::ip::tcp::socket *acceptor::accept(asio::io_service &ioservice)
 {
     using namespace nspac;
     asio::ip::tcp::acceptor getter(ioservice);

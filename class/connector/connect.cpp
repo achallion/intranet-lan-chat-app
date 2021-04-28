@@ -5,7 +5,6 @@
 
 namespace nspcc
 {
-    asio::io_service ioservice;
     system::error_code ec;
 
 #define errormayhappen                                                    \
@@ -38,7 +37,7 @@ void connector::setaddress(string ip)
     errormayhappen;
 }
 
-asio::ip::tcp::socket *connector::getsock()
+asio::ip::tcp::socket *connector::getsock(asio::io_service &ioservice)
 {
     using namespace nspcc;
     asio::ip::tcp::socket *socket = new asio::ip::tcp::socket(ioservice);

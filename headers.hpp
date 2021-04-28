@@ -9,9 +9,9 @@ using namespace boost;
 
 #include "class/poweraddress/pdress.hpp"
 #include "class/user/user.hpp"
-#include "class/makeptr/makeptr.hpp"
 #include "class/connector/connect.hpp"
 #include "class/acceptor/acceptor.hpp"
 #include "class/rw/rw.hpp"
+#include "class/crypt/crypt.hpp"
 
-#include "./helper.cpp"
+asio::io_service ioservice;

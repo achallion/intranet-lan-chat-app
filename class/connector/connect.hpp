@@ -4,7 +4,6 @@
 #include <boost/asio.hpp>
 #include <iostream>
 #include <string>
-#include "../makeptr/makeptr.hpp"
 
 using namespace std;
 using namespace boost;
@@ -16,11 +15,11 @@ class connector
 
 public:
     connector();
-    connector(string ip, int port);
+    connector(string, int);
     ~connector();
 
     void setaddress(string);
-    asio::ip::tcp::socket* getsock();
+    asio::ip::tcp::socket *getsock(asio::io_service &);
 };
 
 #endif

@@ -10,8 +10,6 @@
 using namespace std;
 using namespace boost;
 
-#include "../makeptr/makeptr.hpp"
-
 class acceptor
 {
     int port;
@@ -22,7 +20,7 @@ public:
     ~acceptor();
 
     string getaddress();
-    asio::ip::tcp::socket *accept();
+    asio::ip::tcp::socket *accept(asio::io_service &);
 };
 
 #endif
