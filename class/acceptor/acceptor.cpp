@@ -30,13 +30,13 @@ acceptor::~acceptor()
 
 string acceptor::getaddress()
 {
-    cout << "\n\nLet me decide which interface to connect ? (y/n) : ";
+    cout << GRN << "\n\nLet me decide which interface to connect ? (y/n) : " << YEL;
     char x;
     cin >> x;
     string rawadd;
     if (x == 'n' || x == 'N')
     {
-        cout << "Okey then , give a working wireless ip : ";
+        cout <<GRN<< "Okey then , give a working wireless ip : " << YEL;
         cin >> rawadd;
     }
     else

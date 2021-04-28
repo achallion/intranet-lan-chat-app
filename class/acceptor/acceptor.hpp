@@ -10,6 +10,9 @@
 using namespace std;
 using namespace boost;
 
+#define GRN  "\x1B[32m"
+#define YEL  "\x1B[33m"
+
 class acceptor
 {
     int port;

@@ -1,26 +1,13 @@
 #include "headers.hpp"
 
-string remnl(string str)
-{
-    int n = str.size(), pos = -1;
-    for (int i = 0; i < n; i++)
-    {
-        if (str[i] == '\n')
-            pos = i;
-    }
-    if (pos != -1)
-        str = str.substr(0, pos);
-    return str;
-}
-
 int main()
 {
-    cout << "Welcome To End To End Encrypted Intranet Lan System";
+    cout << GRN << "Welcome To End To End Encrypted Intranet Lan System";
     user me;
     user frnd;
-    cout << "\n\nWhat is Your Username : ";
+    cout << GRN << "\n\nWhat is Your Username : " << YEL;
     cin >> me.name;
-    cout << me.getname() + " , Do You want to connect to your friend : (y/n) ";
+    cout << GRN << me.getname() + " , Do You want to connect to your friend : (y/n) " << YEL;
     char ans;
     cin >> ans;
     bool connected = false;
@@ -29,7 +16,7 @@ int main()
     if (ans == 'y' || ans == 'Y')
     {
         connected = true;
-        cout << "Give Your Friend Address : ";
+        cout << GRN << "Give Your Friend Address : " << YEL;
         cin >> frnd.address;
         poweradd ptor;
         ptor.setpadd(frnd.getaddress());
@@ -39,7 +26,7 @@ int main()
     }
     else
     {
-        cout << me.getname() + " , Do you Want a Friend to Connect : (y/n) ";
+        cout << GRN << me.getname() + " , Do you Want a Friend to Connect : (y/n) " << YEL;
         cin >> ans;
         if (ans == 'y' || ans == 'Y')
         {
@@ -49,7 +36,7 @@ int main()
             me.address = accept.getaddress();
             poweradd rtop;
             rtop.setraw(me.address);
-            cout << "\n\nYour Address is : " << rtop.getpadd() << flush;
+            cout << GRN << "\n\nYour Address is : " << YEL << rtop.getpadd() << flush << YEL;
             mysock = accept.accept(ioservice);
         }
     }
@@ -78,18 +65,18 @@ int main()
         {
             string recvddata = remnl(rw::recieve(mysock));
             string rdata = remnl(recvddata);
-            cout << "\n\nRecieved Encrypted Message : " << rdata;
+            cout << GRN << "\n\nRecieved Encrypted Message : " << RED << rdata;
             cout << "\n"
-                 << frnd.name << " > " << decrypt::xor_(decrypt::base64(rdata)) << flush;
+                 << RST << frnd.name << WHT << " > " << BLU << decrypt::xor_(decrypt::base64(rdata)) << flush;
 
             cin.clear();
             cin.ignore(INT_MAX, '\n');
 
             cout << "\n"
-                 << me.name << " ( YOU ) > " << flush;
+                 << RST << me.name << " ( YOU )" << WHT << " > " << BLU << flush;
             getline(cin, sendermsg);
             string sdata = encrypt::base64(encrypt::xor_(sendermsg));
-            cout << "Sending Encrypted Message : " << sdata << flush;
+            cout << GRN << "Sending Encrypted Message : " << RED << sdata << flush;
             rw::send(mysock, sdata);
         }
 
