@@ -45,6 +45,8 @@ int main()
 
     if (connected)
     {
+        cout <<"\n" << RED << "[+]";
+        cout << GRN << "Wireless Interface Activated" << flush;
 
         if (server)
         {
